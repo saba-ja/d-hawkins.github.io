@@ -1,0 +1,5 @@
+---
+hide:
+  - pageTitle
+  - editButton
+---

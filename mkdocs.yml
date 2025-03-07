@@ -1,0 +1,165 @@
+site_name: D-Hawkins
+site_description: Learning FPGA basic and advanced technical topics
+site_url: https://d-hawkins.com/
+site_author: D. Hawkins
+repo_url: https://github.com/d-hawkins/d-hawkins.github.io
+repo_name: d-hawkins/d-hawkins.github.io
+
+#-------------------------------------------------------------------------------
+# Theme and custom style
+#-------------------------------------------------------------------------------
+extra_css:
+  - assets/stylesheets/extra.css
+
+theme:
+  name: material
+  language: en
+  logo: assets/images/logo.png
+  favicon: assets/images/favicon.ico
+  custom_dir: overrides
+  icon:
+    annotation: material/information-slab-circle  # custom icon for annotations
+
+  features:
+    - navigation.sections  # Groups navigation items into collapsible sections  
+    - search.highlight     # Highlights search terms after selecting a search result  
+    - search.share         # Enables sharing of search queries via URL  
+    - search.suggest       # Provides search suggestions as you type  
+    - toc.follow           # Keeps the table of contents highlighted as you scroll  
+    - navigation.tabs      # enables tabs
+    - navigation.top       # enables back to top button
+    - navigation.tabs.sticky # makes tabs sticky
+    - navigation.footer    # enables previous/next page navigation links by the footer
+    - navigation.instant   # instant loading
+    - navigation.indexes   # enables overview pages for sections
+    - navigation.tracking  # URL in the address bar is automatically updated with the active anchor as highlighted in the table of contents
+    - content.code.copy    # enable code copy for all code blocks
+    - content.code.annotate # enable code annotations for all code blocks
+    - content.tooltips     # replaces the browser's rendering logic for title attribute with tooltips (for content, header, navigation)
+    - content.tabs.link    # all content tabs across the whole documentation site will be linked and switch to the same label when the user clicks on a tab
+    # - content.action.edit # display a "Edit Source" button on the top right of the page
+    # - content.action.view  # Adds a "View Source" button to each page  
+
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/lightbulb-on
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: custom
+      toggle:
+        icon: material/lightbulb-off
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+#-------------------------------------------------------------------------------
+# Extra settings
+#-------------------------------------------------------------------------------
+extra:
+  version:
+      provider: mike
+      alias: true
+  generator: false # removes "Made with Material for Mkdocs"
+  homepage: https://d-hawkins.com/ # Forces homepage link not to include versioning info
+  social:
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com
+      name: d-hawkins on X
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com
+      name: d-hawkins on LinkedIn
+
+
+#-------------------------------------------------------------------------------
+# Extensions
+#-------------------------------------------------------------------------------
+markdown_extensions: 
+  - toc:
+      toc_depth: 2
+  - attr_list # allows to add HTML attributes and CSS classes to almost every Markdown inline- and block-level element with a special syntax
+  - md_in_html # allows for writing Markdown inside of HTML
+  - tables # enables markdown tables
+  # enables syntax highlighting on code blocks and inline code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  # enables the use of definition lists and tasks lists
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # enables abbreviations and allows to build a simple project-wide glossary, sourcing definitions from a central location.
+  - abbr
+  - pymdownx.snippets
+  # enables tabs
+  - pymdownx.tabbed:
+      alternate_style: true
+  # enables the use of icons and emojis by using simple shortcodes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+
+#-------------------------------------------------------------------------------
+# Plugins
+#-------------------------------------------------------------------------------
+plugins:
+  - glightbox:
+      touchNavigation: false
+      loop: false
+      effect: zoom
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - rss:
+      match_path: "posts/.*"
+      pretty_print: false
+      rss_feed_enabled: true
+      date_from_meta:
+        as_creation: date.created
+        as_update: date.updated
+
+
+#-------------------------------------------------------------------------------
+# Copyright
+#-------------------------------------------------------------------------------
+copyright: Copyright &copy; D. Hawkins
+
+
+#-------------------------------------------------------------------------------
+# Custom navigation
+#-------------------------------------------------------------------------------
+nav:
+  - Home: './index.md'
+  - Tutorials:
+    - 'Tutorials Overview': './tutorials/index.md'
+    - Microchip:
+      - 'How to use Microchip JTAG': './tutorials/microchip/microchip_jtag_tutorial/microchip_jtag_tutorial.md'
+  - About: './about/index.md'
+
